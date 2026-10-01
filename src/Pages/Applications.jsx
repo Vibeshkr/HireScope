@@ -1,22 +1,10 @@
-import {
-  useEffect,
-  useState,
-} from "react";
+import {useEffect,useState,} from "react";
 
-import {
-  Link,
-} from "react-router-dom";
+import {Link,} from "react-router-dom";
 
-import {
-  FaExternalLinkAlt,
-  FaTrash,
-  FaArrowRight,
-} from "react-icons/fa";
+import {FaExternalLinkAlt,FaTrash,FaArrowRight,} from "react-icons/fa";
 
-import {
-  getApplications,
-  deleteApplication,
-} from "../services/applicationService";
+import {getApplications,deleteApplication,} from "../services/applicationService";
 
 function Applications() {
   const userId =

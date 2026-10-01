@@ -1,19 +1,10 @@
-import {
-  useState,
-} from "react";
+import {useState,} from "react";
 
-import {
-  Link,
-  useNavigate,
-} from "react-router-dom";
+import {Link,useNavigate,} from "react-router-dom";
 
-import {
-  FaArrowRight,
-} from "react-icons/fa";
+import {FaArrowRight,} from "react-icons/fa";
 
-import {
-  loginUser,
-} from "../services/authService";
+import {loginUser,} from "../services/authService";
 
 function Login({
   onLogin,

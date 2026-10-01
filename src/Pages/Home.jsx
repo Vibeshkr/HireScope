@@ -1,10 +1,6 @@
-import {
-  Link,
-} from "react-router-dom";
+import {Link,} from "react-router-dom";
 
-import {
-  FaArrowRight,
-} from "react-icons/fa";
+import {FaArrowRight,} from "react-icons/fa";
 
 function Home({
   user,

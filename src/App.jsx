@@ -1,17 +1,6 @@
-
-import {
-  useEffect,
-  useState,
-} from "react";
-
-import {
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-
+import {useEffect,useState,} from "react";
+import {Routes,Route,Navigate,} from "react-router-dom";
 import Header from "./components/Header";
-
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
@@ -21,14 +10,8 @@ import JobDetails from "./Pages/JobDetails";
 import Match from "./Pages/Match";
 import Resources from "./Pages/Resources";
 import Applications from "./Pages/Applications";
-
-import {
-  getUserById,
-} from "./services/authService";
-
-import {
-  getProfile,
-} from "./services/profileService";
+import { getUserById,} from "./services/authService";
+import {getProfile,} from "./services/profileService";
 
 function App() {
   const [user, setUser] =

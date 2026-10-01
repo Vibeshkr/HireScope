@@ -2,12 +2,7 @@ import { useEffect,useMemo,useState,} from "react";
 
 import axios from "axios";
 import { Link } from "react-router-dom";
-import {
-  FaSearch,
-  FaMapMarkerAlt,
-  FaBriefcase,
-  FaArrowRight,
-} from "react-icons/fa";
+import {FaSearch,FaMapMarkerAlt,FaBriefcase,FaArrowRight,} from "react-icons/fa";
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);

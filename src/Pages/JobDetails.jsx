@@ -1,26 +1,13 @@
 
-import {
-  useEffect,
-  useState,
-} from "react";
+import {useEffect,useState,} from "react";
 
-import {
-  Link,
-  useParams,
-} from "react-router-dom";
+import {Link,useParams,} from "react-router-dom";
 
 import axios from "axios";
 
-import {
-  FaArrowLeft,
-  FaCheck,
-  FaExternalLinkAlt,
-} from "react-icons/fa";
+import {FaArrowLeft,FaCheck,FaExternalLinkAlt,} from "react-icons/fa";
 
-import {
-  createApplication,
-  getApplications,
-} from "../services/applicationService";
+import {createApplication,getApplications,} from "../services/applicationService";
 
 function JobDetails() {
   const { id } =

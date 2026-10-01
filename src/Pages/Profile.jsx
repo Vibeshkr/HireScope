@@ -1,23 +1,11 @@
 
-import {
-  useEffect,
-  useState,
-} from "react";
+import {useEffect,useState,} from "react";
 
-import {
-  Link,
-} from "react-router-dom";
+import {Link,} from "react-router-dom";
 
-import {
-  FaArrowRight,
-  FaEdit,
-  FaTimes,
-} from "react-icons/fa";
+import {FaArrowRight,FaEdit,FaTimes,} from "react-icons/fa";
 
-import {
-  createProfile,
-  updateProfile,
-} from "../services/profileService";
+import {createProfile,updateProfile,} from "../services/profileService";
 
 const availableSkills = [
   "HTML",

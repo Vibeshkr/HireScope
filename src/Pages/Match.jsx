@@ -1,25 +1,12 @@
-import {
-  useEffect,
-  useState,
-} from "react";
+import {useEffect,useState,} from "react";
 
-import {
-  Link,
-  useParams,
-} from "react-router-dom";
+import {Link,useParams,} from "react-router-dom";
 
 import axios from "axios";
 
-import {
-  FaArrowLeft,
-  FaCheck,
-  FaTimes,
-  FaBookOpen,
-} from "react-icons/fa";
+import {FaArrowLeft,FaCheck,FaTimes,FaBookOpen,} from "react-icons/fa";
 
-import {
-  getProfile,
-} from "../services/profileService";
+import {getProfile,} from "../services/profileService";
 
 const availableSkills = [
   "HTML",

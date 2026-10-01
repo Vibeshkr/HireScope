@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import {
-  FaBookOpen,
-  FaCode,
-  FaArrowLeft,
-  FaUserEdit,
-  FaRedo,
-} from "react-icons/fa";
+import {FaBookOpen,FaCode,FaArrowLeft,FaUserEdit,FaRedo,} from "react-icons/fa";
 
 import { getProfile } from "../services/profileService";
 
