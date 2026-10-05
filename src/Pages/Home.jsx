@@ -2,10 +2,7 @@ import {Link,} from "react-router-dom";
 
 import {FaArrowRight,} from "react-icons/fa";
 
-function Home({
-  user,
-  profile,
-}) {
+function Home({user,profile,}) {
   return (
     <main className="home">
 

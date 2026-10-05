@@ -1,13 +1,7 @@
 import api from "../config/axios";
 
-export const registerUser = async (
-  userData
-) => {
-  const response = await api.get(
-    `/users?email=${encodeURIComponent(
-      userData.email
-    )}`
-  );
+export const registerUser = async (userData) => {
+  const response = await api.get( `/users?email=${encodeURIComponent(userData.email)}`);
 
   if (response.data.length > 0) {
     throw new Error(
@@ -15,29 +9,15 @@ export const registerUser = async (
     );
   }
 
-  const result = await api.post(
-    "/users",
-    userData
-  );
+  const result = await api.post("/users",userData);
 
   return result.data;
 };
 
-export const loginUser = async (
-  email,
-  password
-) => {
-  const response = await api.get(
-    `/users?email=${encodeURIComponent(
-      email
-    )}`
-  );
+export const loginUser = async (email,password) => {
+  const response = await api.get(`/users?email=${encodeURIComponent(email)}`);
 
-  const user =
-    response.data.find(
-      (item) =>
-        item.password === password
-    );
+  const user =response.data.find((item) =>item.password === password);
 
   if (!user) {
     throw new Error(
@@ -48,12 +28,8 @@ export const loginUser = async (
   return user;
 };
 
-export const getUserById = async (
-  userId
-) => {
-  const response = await api.get(
-    `/users/${userId}`
-  );
+export const getUserById = async (userId) => {
+  const response = await api.get(`/users/${userId}`);
 
   return response.data;
 };

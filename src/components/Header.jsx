@@ -1,17 +1,9 @@
 import {Link,useNavigate,} from "react-router-dom";
 
-function Header({
-  user,
-  profile,
-  onLogout,
-}) {
-  const navigate =
-    useNavigate();
+function Header({user,profile,onLogout,}) {
+  const navigate =useNavigate();
 
-  const handleLogout = () => {
-    onLogout();
-    navigate("/");
-  };
+  const handleLogout = () => {onLogout();navigate("/");};
 
   return (
     <header>
@@ -22,24 +14,14 @@ function Header({
 
       <nav>
 
-        <Link to="/">
-          Home
-        </Link>
-
+        <Link to="/">Home</Link>
         {user && profile && (
           <>
-            <Link to="/jobs">
-              Jobs
-            </Link>
+            <Link to="/jobs"> Jobs </Link>
+            <Link to="/applications"> Applications</Link>
 
-            <Link to="/applications">
-              Applications
-            </Link>
-
-            <Link to="/profile">
-              Profile
-            </Link>
-          </>
+            <Link to="/profile">Profile</Link>
+             </>
         )}
 
       </nav>
@@ -48,47 +30,20 @@ function Header({
 
         {!user ? (
           <>
-            <Link
-              to="/login"
-              className="profile-header-button"
-            >
-              Login
-            </Link>
-
-            <Link
-              to="/register"
-              className="logout-button"
-            >
-              Create Account
-            </Link>
+            <Link to="/login"className="profile-header-button">Login</Link>
+             <Link to="/register"className="logout-button" >   Create Account </Link>
           </>
         ) : (
           <>
             {!profile && (
-              <Link
-                to="/profile"
-                className="profile-header-button"
-              >
-                Create Profile
-              </Link>
+              <Link to="/profile" className="profile-header-button">  Create Profile</Link>
             )}
 
             {profile && (
-              <Link
-                to="/profile"
-                className="profile-header-button"
-              >
-                My Profile
-              </Link>
+               <Link to="/profile"className="profile-header-button" >My Profile</Link>
             )}
 
-            <button
-              type="button"
-              className="logout-button"
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
+            <button  type="button" className="logout-button"onClick={handleLogout}> Logout</button>
           </>
         )}
 

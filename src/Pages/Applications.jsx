@@ -6,102 +6,48 @@ import {FaExternalLinkAlt,FaTrash,FaArrowRight,} from "react-icons/fa";
 
 import {getApplications,deleteApplication,} from "../services/applicationService";
 
-function Applications() {
-  const userId =
-    localStorage.getItem(
-      "hireScopeUserId"
-    );
+function Applications() {const userId = localStorage.getItem(   "hireScopeUserId" );
 
-  const [
-    applications,
-    setApplications,
-  ] = useState([]);
+  const [applications,setApplications, ] = useState([]);
 
-  const [loading, setLoading] =
-    useState(true);
+  const [loading, setLoading] =useState(true);
 
-  const [error, setError] =
-    useState("");
+  const [error, setError] =useState("");
 
-  const [
-    deletingId,
-    setDeletingId,
-  ] = useState(null);
+  const [ deletingId,setDeletingId,] = useState(null);
 
-  useEffect(() => {
-    fetchApplications();
-  }, []);
+  useEffect(() => { fetchApplications();}, []);
 
-  const fetchApplications =
-    async () => {
-      try {
-        setLoading(true);
+  const fetchApplications =  async () => {
+      try { setLoading(true);
 
         if (!userId) {
           setApplications([]);
           return;
         }
 
-        const data =
-          await getApplications(
-            userId
-          );
-
-        setApplications(data);
-      } catch (error) {
-        console.error(
-          "APPLICATIONS ERROR:",
-          error
-        );
-
-        setError(
-          "Failed to load applications."
-        );
-      } finally {
-        setLoading(false);
-      }
+        const data =await getApplications(  userId);setApplications(data);} 
+        catch (error) {console.error( "APPLICATIONS ERROR:", error);
+      setError("Failed to load applications." );} 
+      finally {setLoading(false);}
     };
 
-  const handleDelete =
-    async (applicationId) => {
-      const confirmed =
-        window.confirm(
-          "Remove this application from your tracking list?"
-        );
+  const handleDelete =async (applicationId) => {
+      const confirmed =   window.confirm("Remove this application from your tracking list?");
+     if (!confirmed) {  return;}
 
-      if (!confirmed) {
-        return;
-      }
+      try {setDeletingId(applicationId);
 
-      try {
-        setDeletingId(
-          applicationId
-        );
+        await deleteApplication(applicationId);
 
-        await deleteApplication(
-          applicationId
-        );
-
-        setApplications(
-          (current) =>
-            current.filter(
-              (application) =>
-                application.id !==
-                applicationId
-            )
-        );
-      } catch (error) {
-        console.error(
-          "DELETE ERROR:",
-          error
-        );
+        setApplications((current) =>current.filter( (application)=>application.id !== applicationId ));
+      } 
+      catch (error) {console.error("DELETE ERROR:", error);
 
         alert(
           "Failed to remove application."
         );
-      } finally {
-        setDeletingId(null);
-      }
+      } finally {setDeletingId(null); }
     };
 
   if (loading) {
@@ -110,9 +56,7 @@ function Applications() {
 
         <div className="applications-loading">
 
-          <h2>
-            Loading applications...
-          </h2>
+          <h2>Loading applications... </h2>
 
         </div>
 
@@ -129,9 +73,7 @@ function Applications() {
 
           <div>
 
-            <p className="page-label">
-              APPLICATION TRACKING
-            </p>
+            <p className="page-label">APPLICATION TRACKING</p>
 
             <h1>
               My Applications

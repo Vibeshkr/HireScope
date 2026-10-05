@@ -10,79 +10,44 @@ import {FaArrowLeft,FaCheck,FaExternalLinkAlt,} from "react-icons/fa";
 import {createApplication,getApplications,} from "../services/applicationService";
 
 function JobDetails() {
-  const { id } =
-    useParams();
+  const { id } =useParams();
 
-  const userId =
-    localStorage.getItem(
-      "hireScopeUserId"
-    );
+  const userId = localStorage.getItem(  "hireScopeUserId");
 
-  const [job, setJob] =
-    useState(null);
+  const [job, setJob] =useState(null);
 
-  const [loading, setLoading] =
-    useState(true);
+  const [loading, setLoading] =useState(true);
 
-  const [error, setError] =
-    useState("");
+  const [error, setError] =useState("");
 
-  const [applied, setApplied] =
-    useState(false);
+  const [applied, setApplied] = useState(false);
 
-  const [applying, setApplying] =
-    useState(false);
+  const [applying, setApplying] =useState(false);
 
-  useEffect(() => {
-    fetchJob();
-  }, [id]);
+  useEffect(() => {fetchJob();}, [id]);
 
   const fetchJob = async () => {
-    try {
-      setLoading(true);
-      setError("");
+    try { setLoading(true); setError("");
 
       const response =
-        await axios.get(
-          "https://remotive.com/api/remote-jobs"
-        );
+        await axios.get(  "https://remotive.com/api/remote-jobs" );
 
-      const jobs =
-        response.data.jobs || [];
+      const jobs =response.data.jobs || [];
 
-      const selectedJob =
-        jobs.find(
-          (item) =>
-            String(item.id) ===
-            String(id)
-        );
+      const selectedJob =jobs.find( (item) =>  String(item.id) ===  String(id) );
 
       if (!selectedJob) {
-        setError(
-          "Job not found."
-        );
+        setError("Job not found.");
 
         return;
       }
 
-      setJob(
-        selectedJob
-      );
+      setJob(selectedJob);
 
       if (userId) {
-        const applications =
-          await getApplications(
-            userId
-          );
+        const applications =await getApplications(userId);
 
-        const alreadyApplied =
-          applications.some(
-            (application) =>
-              String(
-                application.jobId
-              ) ===
-              String(id)
-          );
+        const alreadyApplied =applications.some((application) => String(application.jobId) ===String(id));
 
         setApplied(
           alreadyApplied
@@ -102,11 +67,7 @@ function JobDetails() {
     }
   };
 
-  const cleanDescription =
-    (html) => {
-      if (!html) {
-        return "";
-      }
+  const cleanDescription =(html) => {  if (!html) {return ""; }
 
       return html
         .replace(
