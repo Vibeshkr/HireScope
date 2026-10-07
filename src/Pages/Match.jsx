@@ -69,41 +69,24 @@ const skillAliases = {
   "vue.js": "vue.js",
 };
 
-const normalizeSkill =
-  (skill) => {
-    const value =
-      skill
-        .toLowerCase()
-        .trim();
+const normalizeSkill =(skill) => {
+    const value =skill.toLowerCase().trim();
 
-    return (
-      skillAliases[value] ||
-      value
-    );
+    return (skillAliases[value] ||value);
   };
 
-const containsSkill = (
-  text,
-  skill
-) => {
+const containsSkill = (text,skill) => {
   if (!text || !skill) {
     return false;
   }
 
-  const normalizedText =
-    text.toLowerCase();
+  const normalizedText =text.toLowerCase();
 
-  const normalizedSkill =
-    normalizeSkill(skill);
+  const normalizedSkill =normalizeSkill(skill);
 
-  const escaped =
-    normalizedSkill.replace(
-      /[.*+?^${}()|[\]\\]/g,
-      "\\$&"
-    );
+  const escaped =normalizedSkill.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
 
-  const regex =
-    new RegExp(
+  const regex =new RegExp(
       `(^|[^a-z0-9])${escaped}(?=$|[^a-z0-9])`,
       "i"
     );
@@ -113,43 +96,25 @@ const containsSkill = (
   );
 };
 
-function Match() {
-  const { id } =
-    useParams();
+function Match() {const { id } = useParams();
 
-  const userId =
-    localStorage.getItem(
-      "hireScopeUserId"
-    );
+  const userId =localStorage.getItem("hireScopeUserId");
 
-  const [profile, setProfile] =
-    useState(null);
+  const [profile, setProfile] =useState(null);
 
-  const [job, setJob] =
-    useState(null);
+  const [job, setJob] =useState(null);
 
-  const [
-    matchedSkills,
-    setMatchedSkills,
-  ] = useState([]);
+  const [matchedSkills,setMatchedSkills,] = useState([]);
 
-  const [
-    missingSkills,
-    setMissingSkills,
-  ] = useState([]);
+  const [missingSkills,setMissingSkills,] = useState([]);
 
-  const [score, setScore] =
-    useState(0);
+  const [score, setScore] =useState(0);
 
-  const [loading, setLoading] =
-    useState(true);
+  const [loading, setLoading] =useState(true);
 
-  const [error, setError] =
-    useState("");
+  const [error, setError] =useState("");
 
-  useEffect(() => {
-    loadMatchData();
-  }, [id]);
+  useEffect(() => {loadMatchData();}, [id]);
 
   const loadMatchData =
     async () => {
@@ -165,13 +130,9 @@ function Match() {
           return;
         }
 
-        const profiles =
-          await getProfile(
-            userId
-          );
+        const profiles =await getProfile(userId);
 
-        const currentProfile =
-          profiles[0];
+        const currentProfile =profiles[0];
 
         if (
           !currentProfile ||
@@ -192,20 +153,11 @@ function Match() {
           currentProfile
         );
 
-        const response =
-          await axios.get(
-            "https://remotive.com/api/remote-jobs"
-          );
+        const response =await axios.get("https://remotive.com/api/remote-jobs");
 
-        const jobs =
-          response.data.jobs || [];
+        const jobs =response.data.jobs || [];
 
-        const currentJob =
-          jobs.find(
-            (item) =>
-              String(item.id) ===
-              String(id)
-          );
+        const currentJob =jobs.find((item) =>String(item.id) ===String(id));
 
         if (!currentJob) {
           setError(
@@ -219,12 +171,7 @@ function Match() {
           currentJob
         );
 
-        const jobText = [
-          currentJob.title,
-          currentJob.category,
-          currentJob.job_type,
-          currentJob.description,
-        ]
+        const jobText = [currentJob.title,currentJob.category,currentJob.job_type,currentJob.description,]
           .filter(Boolean)
           .join(" ");
 

@@ -42,31 +42,20 @@ const availableSkills = [
   "Azure",
 ];
 
-function Profile({
-  user,
-  profile,
-  refreshProfile,
-}) {
-  const [name, setName] =
-    useState("");
+function Profile({user,profile,refreshProfile,}) {
+  const [name, setName] =useState("");
 
-  const [role, setRole] =
-    useState("");
+  const [role, setRole] =useState("");
 
-  const [experience, setExperience] =
-    useState("Fresher");
+  const [experience, setExperience] =useState("Fresher");
 
-  const [skillInput, setSkillInput] =
-    useState("");
+  const [skillInput, setSkillInput] =useState("");
 
-  const [skills, setSkills] =
-    useState([]);
+  const [skills, setSkills] =useState([]);
 
-  const [saving, setSaving] =
-    useState(false);
+  const [saving, setSaving] =useState(false);
 
-  const [isEditing, setIsEditing] =
-    useState(false);
+  const [isEditing, setIsEditing] =useState(false);
 
   useEffect(() => {
     if (!user) {

@@ -6,49 +6,31 @@ import {FaArrowRight,} from "react-icons/fa";
 
 import {loginUser,} from "../services/authService";
 
-function Login({
-  onLogin,
-}) {
-  const navigate =
-    useNavigate();
+function Login({onLogin,}) {
+  const navigate =useNavigate();
 
-  const [email, setEmail] =
-    useState("");
+  const [email, setEmail] =useState("");
 
-  const [password, setPassword] =
-    useState("");
+  const [password, setPassword] = useState("");
 
-  const [loading, setLoading] =
-    useState(false);
+  const [loading, setLoading] =useState(false);
 
-  const handleLogin =
-    async (e) => {
-      e.preventDefault();
+  const handleLogin = async (e) => {e.preventDefault();
 
       if (!email.trim()) {
-        alert(
-          "Please enter your email."
-        );
+        alert( "Please enter your email.");
         return;
       }
 
       if (!password) {
-        alert(
-          "Please enter your password."
-        );
+        alert("Please enter your password.");
         return;
       }
 
       try {
         setLoading(true);
 
-        const user =
-          await loginUser(
-            email
-              .trim()
-              .toLowerCase(),
-            password
-          );
+        const user =await loginUser( email.trim().toLowerCase(),password);
 
         onLogin(user);
 
@@ -59,10 +41,7 @@ function Login({
           error
         );
 
-        alert(
-          error.message ||
-            "Invalid email or password."
-        );
+        alert(error.message ||"Invalid email or password.");
       } finally {
         setLoading(false);
       }
@@ -105,9 +84,7 @@ function Login({
             <input
               type="email"
               value={email}
-              onChange={(e) =>
-                setEmail(
-                  e.target.value
+              onChange={(e) =>setEmail(e.target.value
                 )
               }
               placeholder="Enter your email"

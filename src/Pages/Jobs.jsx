@@ -7,30 +7,22 @@ import {FaSearch,FaMapMarkerAlt,FaBriefcase,FaArrowRight,} from "react-icons/fa"
 function Jobs() {
   const [jobs, setJobs] = useState([]);
 
-  const [search, setSearch] =
-    useState("");
+  const [search, setSearch] =useState("");
 
-  const [category, setCategory] =
-    useState("all");
+  const [category, setCategory] = useState("all");
 
-  const [location, setLocation] =
-    useState("all");
+  const [location, setLocation] =useState("all");
 
-  const [loading, setLoading] =
-    useState(true);
+  const [loading, setLoading] =  useState(true);
 
-  const [error, setError] =
-    useState("");
+  const [error, setError] = useState("");
 
-  useEffect(() => {
-    const fetchJobs = async () => {
+  useEffect(() => {  const fetchJobs = async () => {
       try {
         setLoading(true);
         setError("");
 
-        const response = await axios.get(
-          "https://remotive.com/api/remote-jobs"
-        );
+        const response = await axios.get( "https://remotive.com/api/remote-jobs" );
 
         setJobs(response.data.jobs || []);
       } catch (error) {
@@ -39,9 +31,7 @@ function Jobs() {
           error
         );
 
-        setError(
-          "Failed to load jobs. Please try again."
-        );
+        setError("Failed to load jobs. Please try again.");
       } finally {
         setLoading(false);
       }
@@ -51,9 +41,7 @@ function Jobs() {
   }, []);
 
   const categories = useMemo(() => {
-    const values = jobs
-      .map((job) => job.category)
-      .filter(Boolean);
+    const values = jobs.map((job) => job.category).filter(Boolean);
 
     return [
       "all",
@@ -62,9 +50,7 @@ function Jobs() {
   }, [jobs]);
 
   const locations = useMemo(() => {
-    const values = jobs
-      .map((job) => job.candidate_required_location)
-      .filter(Boolean);
+    const values = jobs.map((job) => job.candidate_required_location).filter(Boolean);
 
     return [
       "all",
